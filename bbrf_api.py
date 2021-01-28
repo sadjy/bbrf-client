@@ -504,10 +504,11 @@ class BBRFApi:
                 seq = change['seq']
                 if change['changes'][-1]['rev'].startswith('1-'):  # check if it is the first revision of a document
                     # notify on new domain
-                    if 'type' in change['doc'] and change['doc']['type'] == 'domain':
-                        if 'source' in change['doc']:
-                            message += '['+change['doc']['source']+'] '
-                        message += change['id'] + ' was added\n'
+                    # if 'type' in change['doc'] and change['doc']['type'] == 'domain':
+                    message += '['+change['doc']['type']+'] '
+                    if 'source' in change['doc']:
+                        message += '['+change['doc']['source']+'] '
+                    message += change['id'] + ' was added\n'
                         
                     # also notify when a new notification was added
                     if 'type' in change['doc'] and change['doc']['type'] == 'alert':
